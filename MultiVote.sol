@@ -45,4 +45,21 @@ function vote(bytes32 _candidate) public onlyVoter {
         emit VoteCast(msg.sender, _candidate);
     }
 
+function getCandidateList() public view returns (bytes32[] memory) {
+        return candidateList;
+    }
+
+    function getCandidateVotes(bytes32 _candidate) public view returns (uint256) {
+        return votes[_candidate];
+    }
+
+    function candidateExists(bytes32 _candidate) public view returns (bool) {
+        for (uint256 i = 0; i < candidateList.length; i++) {
+            if (candidateList[i] == _candidate) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
