@@ -32,4 +32,10 @@ contract MultiCandidateVoting {
         }
     }
 
+function addCandidate(bytes32 _candidate) public onlyAdmin {
+        require(_candidate != bytes32(0), "Invalid candidate");
+        candidateList.push(_candidate);
+        emit CandidateAdded(_candidate);
+    }
+
 }
