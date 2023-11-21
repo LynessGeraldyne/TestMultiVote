@@ -38,4 +38,11 @@ function addCandidate(bytes32 _candidate) public onlyAdmin {
         emit CandidateAdded(_candidate);
     }
 
+function vote(bytes32 _candidate) public onlyVoter {
+        require(candidateExists(_candidate), "Candidate does not exist");
+
+        votes[_candidate]++;
+        emit VoteCast(msg.sender, _candidate);
+    }
+
 }
